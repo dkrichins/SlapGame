@@ -87,11 +87,11 @@ function drawCelebrity (arrCelebrities){
                         <img id="celebrityPic${celebrity.celebrityId}" src="${celebrity.imgUrl}" alt="Celebrity Pic">
                         <button id="punchButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'punch')">punch</button>
                         <button id="kickButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'kick')">kick</button>
-                        <button id="elbowButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'elbow')">knee</button>
-                        <button id="kneeButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'knee')">elbow</button>
+                        <button id="elbowButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'elbow')">elbow</button>
+                        <button id="kneeButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'knee')">knee</button>
                         <button id="resetButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="resetOpponent(${celebrity.celebrityId})">reset</button>									
-                        <h1 id="damageResult${celebrity.celebrityId}">${celebrity.health}</h1>
-                        <h2 id="numberOfHits${celebrity.celebrityId}">${celebrity.hits}</h2>
+                        <h1 id="damageResult${celebrity.celebrityId}">Health Level ${celebrity.health}</h1>
+                        <h2 id="numberOfHits${celebrity.celebrityId}">Number of Hits ${celebrity.hits}</h2>
                     </div>
                 </div>
             </div>
@@ -155,27 +155,31 @@ function updateCelebrityStatus (celebrityId){
     //    UpdatePic.src=targetCelebrity.imgUrl      
     // }
     
-    updateDamageTotal.innerHTML = targetCelebrity.health
-    updateHitsTotal.innerHTML = targetCelebrity.hits
+    updateDamageTotal.innerHTML = "Health Level" + " " + targetCelebrity.health
+    updateHitsTotal.innerHTML = "Number of Hits" + " " + targetCelebrity.hits
 }
 
 function preventNegativeDamage(celebrityId, attackMove){
 
-var targetCelebrity = getCelebrityById(celebrityId)
+    var targetCelebrity = getCelebrityById(celebrityId)
 
- if(targetCelebrity.health <= targetCelebrity.attack[attackMove])
-        {
-            targetCelebrity.health = 0; 
-            targetCelebrity.hits++
-            updateCelebrityStatus (celebrityId)            
-        }
-        else
-        {
-            targetCelebrity.health -= targetCelebrity.attack[attackMove]
-            targetCelebrity.hits++
+    if (targetCelebrity.health == 0)
+    {
+        updateCelebrityStatus (celebrityId) 
+    }
+    else if(targetCelebrity.health <= targetCelebrity.attack[attackMove])
+    {
+        targetCelebrity.health = 0; 
+        targetCelebrity.hits++
+        updateCelebrityStatus (celebrityId)            
+    }
+    else
+    {
+        targetCelebrity.health -= targetCelebrity.attack[attackMove]
+        targetCelebrity.hits++
     
-            updateCelebrityStatus (celebrityId)            
-        }      
+        updateCelebrityStatus (celebrityId)            
+    }      
 
 }
 
