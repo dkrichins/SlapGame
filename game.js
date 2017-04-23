@@ -166,6 +166,7 @@ var targetCelebrity = getCelebrityById(celebrityId)
  if(targetCelebrity.health <= targetCelebrity.attack[attackMove])
         {
             targetCelebrity.health = 0; 
+            targetCelebrity.hits++
             updateCelebrityStatus (celebrityId)            
         }
         else
