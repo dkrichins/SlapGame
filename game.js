@@ -51,8 +51,9 @@ function Celebrity(celebrityId, celebrityName, punch, kick, knee, elbow, imgUrl)
     this.celebrityId = celebrityId;
     this.celebrityName = celebrityName;
     this.imgUrl = imgUrl;
-    this.health = 50;
+    this.health = 100;
     this.hits = 0;
+    
     this.attack = {
         punch: punch,
         kick: kick,
