@@ -188,7 +188,7 @@ function resetOpponent(celebrityId){
 
 var targetCelebrity = getCelebrityById(celebrityId)
 
-targetCelebrity.health = 50;
+targetCelebrity.health = 100;
 targetCelebrity.hits = 0;
 
 updateCelebrityStatus(celebrityId)
