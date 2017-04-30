@@ -1,51 +1,5 @@
-// var playerHealth = 100;
-// var playerHits = 0;
 
-// function damage(strikeWith) {
-// var damageTotal = document.getElementById('damageResult')
-// var hitsTotal = document.getElementById('numberOfHits')
-    
-//         if(strikeWith == 'punch')
-//         {
-//             playerHealth--
-//             playerHits++
-//             damageTotal.innerHTML = playerHealth
-//             hitsTotal.innerHTML = playerHits
-//         }
-//         else if (strikeWith == 'kick')
-//         {
-//             if(playerHealth <= 5)
-//             {
-//             playerHealth = 0
-//             damageTotal.innerHTML = playerHealth
-//             hitsTotal.innerHTML = playerHits
-//             }
-//             else
-//             {
-//             playerHealth -= 5
-//             playerHits++
-//             damageTotal.innerHTML = playerHealth
-//             hitsTotal.innerHTML = playerHits
-//             }            
-//         }
-//         else
-//         {
-//             if(playerHealth <= 10)
-//             {
-//             playerHealth = 0            
-//             damageTotal.innerHTML = playerHealth
-//             hitsTotal.innerHTML = playerHits
-//             }
-//             else
-//             {
-//             playerHealth -= 10
-//             playerHits++
-//             damageTotal.innerHTML = playerHealth
-//             hitsTotal.innerHTML = playerHits
-//             }
-//         }
-//     }
-
+//Private
 function Celebrity(celebrityId, celebrityName, punch, kick, knee, elbow, imgUrl){
     
     this.celebrityId = celebrityId;
@@ -87,6 +41,10 @@ function drawCelebrity (arrCelebrities){
                     <div class="content-body">
                         <img id="celebrityPic${celebrity.celebrityId}" src="${celebrity.imgUrl}" alt="Celebrity Pic">
                         <button id="punchButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'punch')">punch</button>
+                        <button id="kickButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'kick')">kick</button>
+                        <button id="elbowButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'elbow')">elbow</button>
+                        <button id="kneeButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'knee')">knee</button>
+                        <button id="Button${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'punch')">punch</button>
                         <button id="kickButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'kick')">kick</button>
                         <button id="elbowButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'elbow')">elbow</button>
                         <button id="kneeButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="combat(${celebrity.celebrityId}, 'knee')">knee</button>
@@ -160,29 +118,6 @@ function updateCelebrityStatus (celebrityId){
     updateHitsTotal.innerHTML = "Number of Hits" + " " + targetCelebrity.hits
 }
 
-function preventNegativeDamage(celebrityId, attackMove){
-
-    var targetCelebrity = getCelebrityById(celebrityId)
-
-    if (targetCelebrity.health == 0)
-    {
-        updateCelebrityStatus (celebrityId) 
-    }
-    else if(targetCelebrity.health <= targetCelebrity.attack[attackMove])
-    {
-        targetCelebrity.health = 0; 
-        targetCelebrity.hits++
-        updateCelebrityStatus (celebrityId)            
-    }
-    else
-    {
-        targetCelebrity.health -= targetCelebrity.attack[attackMove]
-        targetCelebrity.hits++
-    
-        updateCelebrityStatus (celebrityId)            
-    }      
-
-}
 
 function resetOpponent(celebrityId){
 
