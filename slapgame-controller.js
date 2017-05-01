@@ -18,11 +18,14 @@ function SlapGameController(){
                         </div>
                         <div class="content-body">
                             <img id="celebrityPic${celebrity.celebrityId}" src="${celebrity.imgUrl}" alt="Celebrity Pic">
-                            <button id="punchButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onCombat(${celebrity.celebrityId}, 'punch')">punch</button>
-                            <button id="kickButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onCombat(${celebrity.celebrityId}, 'kick')">kick</button>
-                            <button id="elbowButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onCombat(${celebrity.celebrityId}, 'elbow')">elbow</button>
-                            <button id="kneeButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onCombat(${celebrity.celebrityId}, 'knee')">knee</button>
-                            <button id="resetButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onResetOpponent(${celebrity.celebrityId})">reset</button>									
+                            <button id="punchButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onCombat(${celebrity.celebrityId}, 'punch')">Punch</button>
+                            <button id="kickButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onCombat(${celebrity.celebrityId}, 'kick')">Kick</button>
+                            <button id="elbowButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onCombat(${celebrity.celebrityId}, 'elbow')">Elbow</button>
+                            <button id="kneeButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onCombat(${celebrity.celebrityId}, 'knee')">Knee</button>
+                            <button id="resetButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onResetOpponent(${celebrity.celebrityId})">reset</button>	
+                            <button id="shieldButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onGiveItem(${celebrity.celebrityId}, 'shield')">Shield</button>
+                            <button id="swordButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onGiveItem(${celebrity.celebrityId}, 'sword')">Sword</button>
+                            <button id="superPowerButton${celebrity.celebrityId}" type="button" class="btn btn-lg" onclick="app.controllers.slapGameController.onGiveItem(${celebrity.celebrityId}, 'superPower')">Super Power</button>								
                             <h1 id="damageResult${celebrity.celebrityId}">Health Level ${celebrity.health}</h1>
                             <h2 id="numberOfHits${celebrity.celebrityId}">Number of Hits ${celebrity.hits}</h2>
                         </div>
@@ -35,13 +38,18 @@ function SlapGameController(){
     }
 
     this.onCombat = function onCombat(celebrityId, attackType){
-        slapGameService.processcombat(celebrityId, attackType)
+        slapGameService.processCombat(celebrityId, attackType)
         updateCelebrityStatus(celebrityId)
     }
 
     this.onResetOpponent = function onReset(celebrityId){
         slapGameService.processResetOpponent(celebrityId)
         updateCelebrityStatus(celebrityId)
+
+    }
+
+    this.onGiveItem = function onGiveItem(celebrityId, itemType){
+        slapGameService.processGiveItem (celebrityId, itemType)          
 
     }
 
